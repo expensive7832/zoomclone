@@ -1,13 +1,21 @@
 "use client";
+import HomeCard from "@/components/HomeCard";
 import LeftSideBar from "@/components/LeftSideBar";
 import NavBar from "@/components/NavBar";
 import React, { useEffect, useState } from "react";
 
 
+interface cardDataProps{
+  id: number;
+  title: string;
+  desc: string;
+  img: string;
+}
+
 
 function Home() {
 
-  let cardData = [
+  let cardData: cardDataProps[] = [
     {
       id: 1,
       title: "New Meeting",
@@ -19,12 +27,13 @@ function Home() {
       id: 2,
       title: "Join Meeting",
       desc: "via invitation link",
+      img: require("./../public/upcoing.png")
     },
     {
       id: 3,
       title: "Schedule Meeting",
       desc: "Plan your meeting",
-      img: require("./../")
+      img: require("./../public/card-add.png")
     },
     {
       id: 4,
@@ -62,7 +71,13 @@ function Home() {
          {/* meeting list  card*/}
 
         <div className="grid grid-cols-1">
-
+        {
+          cardData?.map((each) =>(
+            <HomeCard
+            data={each}
+            />
+          ))
+        }
         </div>
 
         </article >
